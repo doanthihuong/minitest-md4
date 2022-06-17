@@ -13,8 +13,6 @@
     <input type="text" name="title">
     <button>search</button>
 </form>
-<a href="/posts/topLikes">hiển thị toplike</a>
-<a href="/posts/topTime">hiển thị topTime</a>
 <div  th:each="po : ${post}" >
     <span th:text="${po.id}"></span>
     <span th:text="${po.content}"></span>

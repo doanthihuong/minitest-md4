@@ -3,12 +3,10 @@ package controller;
 import model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import service.IPostService;
+import service.impl.PostService;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -17,7 +15,7 @@ import java.util.Optional;
 @RequestMapping("/posts")
 public class PostController {
     @Autowired
-            IPostService postService;
+    PostService postService;
 
     @GetMapping
     public ModelAndView show() {
@@ -70,6 +68,29 @@ public class PostController {
         ModelAndView modelAndView = new ModelAndView("redirect:/posts");
         postService.remove(id);
         return modelAndView;
-
     }
+
+    @GetMapping("/search")
+    public ModelAndView showFindForm (@RequestParam String title) {
+        ModelAndView modelAndView =new ModelAndView("/post/search");
+        modelAndView.addObject("post", postService.findByTitle(title));
+        return modelAndView;
+    }
+
+    @GetMapping("/topLikes")
+    public ModelAndView showTopLike ( ) {
+        ModelAndView modelAndView =new ModelAndView("/post/topLike");
+        modelAndView.addObject("post", postService.findTrendLikes());
+        return modelAndView;
+    }
+
+    @GetMapping("/topTime")
+    public ModelAndView showTopTime( ) {
+        ModelAndView modelAndView =new ModelAndView("/post/topTime");
+        modelAndView.addObject("post", postService.findTopByTime());
+        return modelAndView;
+    }
+
+
+
 }

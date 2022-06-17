@@ -114,7 +114,7 @@ public class AppConfig implements WebMvcConfigurer, ApplicationContextAware {
     }
 
     @Bean
-    public IPostService provinceService() {
+    public PostService provinceService() {
         return new PostService();
     }
 }
