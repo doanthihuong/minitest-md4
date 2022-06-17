@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="/posts/create">
+    Add new
+</a>
+<div  th:each="po : ${post}" >
+    <span th:text="${po.id}"></span>
+    <span th:text="${po.content}"></span>
+    <span th:text="${po.title}"></span>
+    <span th:text="${po.likes}"></span>
+    <span th:text="${po.createAt}"></span>
+    <a th:href="@{/posts/edit/__${po.id}__}">Edit</a>
+    <a th:href="@{/posts/delete/__${po.id}__}">Delete</a>
+</div>
+</body>
+</html>
