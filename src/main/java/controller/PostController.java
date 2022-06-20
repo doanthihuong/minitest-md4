@@ -102,4 +102,13 @@ public class PostController {
         return modelAndView;
     }
 
+
+    @PostMapping("/find-by-time")
+    public ModelAndView findByTime(@RequestParam(value = "timeStart") String timeStart,
+                                   @RequestParam(value = "timeEnd") String timeEnd) {
+        Iterable<Post> posts = postService.findByTimeAndOderBy(timeStart, timeEnd);
+        ModelAndView modelAndView = new ModelAndView("/post/list");
+        modelAndView.addObject("post", posts);
+        return modelAndView;
+    }
 }

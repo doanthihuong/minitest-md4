@@ -50,5 +50,7 @@ public class PostService implements IPostService {
       public Iterable<Post> findTitleByTimeAndCreatedAt(String textSearch, String timeStart, String timeEnd) {
           return postRepository.findTitleByTimeAndCreatedAt(textSearch, timeStart, timeEnd);
       }
-
+      public  Iterable<Post> findByTimeAndOderBy(String timeStart, String timeEnd) {
+       return  postRepository.findByTimeAndOderBy(timeStart,timeEnd);
+      }
   }

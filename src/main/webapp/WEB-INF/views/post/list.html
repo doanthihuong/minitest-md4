@@ -17,13 +17,15 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
                             <a href="/posts/create">Tạo Mới</a>
+                            <br>
                         </li>
                         <li class="nav-item">
                             <a href="/posts/topLikes"> Toplike</a>
+                            <br>
                         </li>
-
                         <li class="nav-item">
                             <a href="/posts/topTime">TopTime</a>
+                            <br>
                         </li>
 
                         <div>
@@ -43,6 +45,14 @@
                 </div>
             </nav>
             </div>
+        </div>
+
+        <div>
+            <form action="/posts/find-by-time" method="post">
+                <input type="datetime-local" name = "timeStart" placeholder="Nhập Thời gian bắt đầu">
+                <input type="datetime-local" name = "timeEnd" placeholder="Nhập Thời gian kết thúc">
+                <input type="submit" value="Search3">
+            </form>
         </div>
 
         <div class="row">

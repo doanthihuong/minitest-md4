@@ -22,5 +22,6 @@ public interface PostRepository extends JpaRepository <Post, Long>{
     @Query(value = "select * from Post p where lower(p.title) like(concat('%', lower(:textSearch), '%')) and (p.createAt between :timeStart and :timeEnd);", nativeQuery = true)
     Iterable<Post> findTitleByTimeAndCreatedAt(@Param("textSearch") String textSearch, @Param("timeStart") String timeStart, @Param("timeEnd") String timeEnd);
 
-
+  @Query (value = "select * from Post p where  (p.createAt between :timeStart and :timeEnd) order by createAt ",nativeQuery = true)
+    Iterable<Post> findByTimeAndOderBy(@Param("timeStart") String timeStart, @Param("timeEnd") String timeEnd);
 }
