@@ -92,5 +92,14 @@ public class PostController {
     }
 
 
+    @PostMapping("/find-title-timecreate")
+    public ModelAndView findByTitleAndTimeCreate(@RequestParam(value = "textSearch", defaultValue = "") String textSearch,
+                                                 @RequestParam(value = "timeStart") String timeStart,
+                                                 @RequestParam(value = "timeEnd") String timeEnd) {
+        Iterable<Post> posts = postService.findTitleByTimeAndCreatedAt(textSearch, timeStart, timeEnd);
+        ModelAndView modelAndView = new ModelAndView("/post/list");
+        modelAndView.addObject("post", posts);
+        return modelAndView;
+    }
 
 }

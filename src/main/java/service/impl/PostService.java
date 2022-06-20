@@ -13,7 +13,7 @@ import java.util.Optional;
 public class PostService implements IPostService {
    @Autowired
      PostRepository postRepository;
-    @Override
+   @Override
     public Iterable<Post> findAll() {
         return postRepository.findAll();
     }
@@ -46,5 +46,9 @@ public class PostService implements IPostService {
           return postRepository.findTopByTime();
       }
 
+
+      public Iterable<Post> findTitleByTimeAndCreatedAt(String textSearch, String timeStart, String timeEnd) {
+          return postRepository.findTitleByTimeAndCreatedAt(textSearch, timeStart, timeEnd);
+      }
 
   }
